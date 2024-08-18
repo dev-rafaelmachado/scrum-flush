@@ -1,5 +1,5 @@
 # Scrum Flush
-![GitHub repo size](https://img.shields.io/github/repo-size/dev-rafaelmachado/scrum-poker?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/dev-rafaelmachado/scrum-flush?style=for-the-badge)
 
 ### 🚀 About the project 
 Scrum Flush is a tool designed to assist development teams during the Sprint planning phase. The application allows team members to assign points to user stories in a collaborative and efficient manner, using the card-based estimation method known as Planning Poker.
