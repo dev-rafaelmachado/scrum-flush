@@ -21,7 +21,7 @@ Scrum Flush is a tool designed to assist development teams during the Sprint pla
 - [Tailwind CSS](https://tailwindcss.com/)
     
 ### Backend
-This project uses the API developed by @marcelowf. For more information about the API, go to the official repository available [here](https://github.com/marcelowf/Scrum-Poker-API).
+This project uses the API developed by [@marcelowf](https://github.com/marcelowf). For more information about the API, go to the official repository available [here](https://github.com/marcelowf/Scrum-Poker-API).
 
 ### Design
 The design follows a minimalist style and clean layout, focusing on the user experience and usability of the application. 
