@@ -26,11 +26,8 @@ This project uses the API developed by [@marcelowf](https://github.com/marcelowf
 ### Design
 The design follows a minimalist style and clean layout, focusing on the user experience and usability of the application. 
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FDH5zyxT75Yd2m7kGv5O92V%2FScrum-Flush%3Fnode-id%3D0-1%26t%3Dd8TrewZQuTxvRi33-1" allowfullscreen></iframe>
-
 > You can access the Figma project [here](https://www.figma.com/design/DH5zyxT75Yd2m7kGv5O92V/Scrum-Flush?node-id=0-1&t=d8TrewZQuTxvRi33-1) to view the design and make suggestions for improvements.
 
-</br>
 </br>
 
 ## 🛠️ Getting Started
@@ -45,7 +42,7 @@ Before you start, you will need to have the following tools installed on your ma
 ### Installation
 1. Clone the repository:
 ```bash
-git clone https://github.com/dev-rafaelmachado/scrum-poker.git
+git clone https://github.com/dev-rafaelmachado/scrum-flush.git
 ```
 
 2. Install the dependencies:
