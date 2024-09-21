@@ -1,7 +1,8 @@
 import { GetDTO } from '@/types/dto/GetDTO'
+
+import { GetUserByIdDTO } from '../../../user/UserDTO'
 import { GetTeamByIdDTO } from '../../TeamDTO'
 import { TeamUserEntity, TeamUserModel } from './TeamUser'
-import { GetUserByIdDTO } from '../../../user/UserDTO'
 
 export type GetTeamUserByIdDTO = TeamUserEntity & {
   team: Omit<GetTeamByIdDTO, 'teamUsers'> // extension

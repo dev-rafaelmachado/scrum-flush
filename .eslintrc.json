@@ -2,5 +2,47 @@
   "extends": [
     "@rocketseat/eslint-config/next", 
     "next/core-web-vitals"
-  ]
+  ],
+  "plugins": ["eslint-plugin-import-helpers"],
+  "rules": {
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        // Define se vai haver uma linha em branco entre os grupos de imports
+        "newlinesBetween": "always",
+        
+        // Define os grupos de importação
+        "groups": [
+          // Importações do Next.js
+          "/^next/",
+          // Importações do React
+          "/^react/",
+          // Importações de bibliotecas externas (node_modules)
+          "module",
+          // Importações da pasta components (customizada)
+          "/^@/components/",
+          // Importações de contextos
+          "/^@/contexts/",
+          // Importações de hooks
+          "/^@/hooks/",
+          // Importações de shared (recursos compartilhados, utils)
+          "/^@/shared/",
+          // Importações de procedures
+          "/^@/procedures/",
+          // Importações de módulos específicos
+          "/^@/modules/",
+          // Importações de services
+          "/^@/services/",
+          // Importações de utils
+          "/^@/utils/",
+          // Importações de tipos (tipagens TypeScript)
+          "/^@/types/",
+          // Outras importações (arquivos locais, parentes, irmãos e index)
+          ["parent", "sibling", "index"]
+        ],
+        
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
+  }
 }

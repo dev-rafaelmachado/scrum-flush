@@ -1,4 +1,5 @@
 import { PlayerType } from '@/types/enums/PlayerType'
+
 import { BaseEntity } from '../BaseEntity'
 
 export type PlayerModel = {

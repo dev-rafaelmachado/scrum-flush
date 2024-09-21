@@ -1,8 +1,9 @@
 import { GetDTO } from '@/types/dto/GetDTO'
+
 import { GetRoomByIdDTO } from '../room/RoomDTO'
-import { RoundEntity, RoundModel } from './Round'
 import { GetStorieByIdDTO } from '../storie/StorieDTO'
 import { GetVoteByIdDTO } from '../vote/VoteDTO'
+import { RoundEntity, RoundModel } from './Round'
 
 export type GetRoundByIdDTO = RoundEntity & {
   room: Omit<GetRoomByIdDTO, 'roomRounds'> // extension

@@ -1,4 +1,5 @@
 import { RoomPlayerRole } from '@/types/enums/RoomPlayerRole'
+
 import { BaseEntity } from '../../../BaseEntity'
 
 export type RoomPlayerModel = {

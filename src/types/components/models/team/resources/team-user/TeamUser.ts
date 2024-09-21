@@ -1,4 +1,5 @@
 import { TeamUserRole } from '@/types/enums/TeamUserRole'
+
 import { BaseEntity } from '../../../BaseEntity'
 
 export type TeamUserModel = {

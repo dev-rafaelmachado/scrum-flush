@@ -1,4 +1,5 @@
 import { GetDTO } from '@/types/dto/GetDTO'
+
 import { GetPlayerByIdDTO } from '../player/PlayerDTO'
 import { GetTeamUserByIdDTO } from '../team/resources/team-user/TeamUserDTO'
 import { UserEntity, UserModel } from './User'

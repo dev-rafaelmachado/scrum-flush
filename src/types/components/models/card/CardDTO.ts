@@ -1,7 +1,8 @@
 import { GetDTO } from '@/types/dto/GetDTO'
-import { CardEntity, CardModel } from './Card'
+
 import { GetCollectionByIdDTO } from '../collection/CollectionDTO'
 import { GetVoteByIdDTO } from '../vote/VoteDTO'
+import { CardEntity, CardModel } from './Card'
 
 export type GetCardByIdDTO = CardEntity & {
   collection: Omit<GetCollectionByIdDTO, 'cards'> // extension[collection]

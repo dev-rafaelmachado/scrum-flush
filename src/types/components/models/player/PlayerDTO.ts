@@ -1,8 +1,9 @@
 import { GetDTO } from '@/types/dto/GetDTO'
-import { PlayerEntity, PlayerModel } from './Player'
+
 import { GetRoomPlayerByIdDTO } from '../room/resources/room-player/RoomPlayerDTO'
 import { GetUserByIdDTO } from '../user/UserDTO'
 import { GetVoteByIdDTO } from '../vote/VoteDTO'
+import { PlayerEntity, PlayerModel } from './Player'
 
 export type GetPlayerByIdDTO = PlayerEntity & {
   user: Omit<GetUserByIdDTO, 'players'> // extension

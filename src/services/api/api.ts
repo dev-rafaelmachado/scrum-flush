@@ -1,10 +1,10 @@
 import { GetServerSidePropsContext, PreviewData } from 'next'
-import { ParsedUrlQuery } from 'querystring'
 
 import axios, { AxiosError } from 'axios'
 import { parseCookies, setCookie } from 'nookies'
+import { ParsedUrlQuery } from 'querystring'
 
-import { AuthTokenError } from '@/utils/errors/AuthToken'
+import { AuthTokenError } from '@/shared/utils/errors/AuthToken'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const REFRESH_ENDPOINT = '/v1/refresh'
@@ -13,8 +13,8 @@ const REFRESH_TOKEN_COOKIE_NAME = 'scrum-flush.refreshToken'
 const TOKEN_COOKIE_NAME = 'scrum-flush.token'
 
 const COOKIE_OPTIONS = {
-  maxAge: 30 * 24 * 60 * 60, // 30 dias
-  path: '/', // Caminho para o cookie
+  maxAge: 30 * 24 * 60 * 60, // 30 days
+  path: '/', // Cookie path
 }
 
 interface AxiosErrorResponse {
@@ -37,7 +37,7 @@ export function setupAPIClient(
     baseURL: BASE_URL,
   })
 
-  // Adiciona o token e o companyTenantId aos headers nas requisições
+  // Add token and companyTenantId to headers in requests
   api.defaults.headers.common.Authorization = `Bearer ${cookies[TOKEN_COOKIE_NAME]}`
 
   api.interceptors.response.use(
@@ -45,33 +45,33 @@ export function setupAPIClient(
     async (error: AxiosError<AxiosErrorResponse>) => {
       const originalRequest = error.config
 
-      // Se o erro for de autenticação e o token estiver expirado
+      // If the error is authentication-related and the token is expired
       if (
         error.response?.status === 401 &&
         error.response.data?.message === 'JWT is expired'
       ) {
-        cookies = parseCookies(ctx) // Atualiza os cookies
+        cookies = parseCookies(ctx) // Update cookies
 
         const { [REFRESH_TOKEN_COOKIE_NAME]: refreshToken } = cookies
 
-        // Se não está já em processo de refresh do token
+        // If not already refreshing the token
         if (!isRefreshing) {
           isRefreshing = true
 
           try {
-            // Faz a requisição de refresh do token
+            // Make the token refresh request
             const response = await api.post(REFRESH_ENDPOINT, { refreshToken })
 
             const newToken = response.headers.authorization
             const newRefreshToken = response.data.refreshToken
 
-            // Atualiza os cookies com o novo token
+            // Update cookies with the new token
             setCookie(ctx, TOKEN_COOKIE_NAME, newToken, COOKIE_OPTIONS)
 
-            // Atualiza o header do axios com o novo token
+            // Update axios header with the new token
             api.defaults.headers.common.Authorization = `Bearer ${newToken}`
 
-            // Atualiza o refresh token
+            // Update the refresh token
             setCookie(
               ctx,
               REFRESH_TOKEN_COOKIE_NAME,
@@ -79,13 +79,13 @@ export function setupAPIClient(
               COOKIE_OPTIONS,
             )
 
-            // Processa todas as requisições que falharam por conta do token expirado
+            // Process all failed requests due to expired token
             failedRequestsQueue.forEach((request) =>
               request.onSuccess(newToken),
             )
             failedRequestsQueue = []
           } catch (error) {
-            // Falha no refresh do token, força o logout
+            // Token refresh failed, force logout
             failedRequestsQueue.forEach((request) =>
               request.onFailure(error as AxiosError<AxiosErrorResponse>),
             )
@@ -100,7 +100,7 @@ export function setupAPIClient(
           }
         }
 
-        // Coloca a requisição na fila de espera até o token ser renovado
+        // Put the request in the waiting queue until the token is renewed
         return new Promise((resolve, reject) => {
           failedRequestsQueue.push({
             onSuccess: (token: string) => {
@@ -115,7 +115,7 @@ export function setupAPIClient(
           })
         })
       } else {
-        // Se for qualquer outro tipo de erro, que não seja de token expirado
+        // If it's any other type of error, not related to expired token
         if (typeof window !== 'undefined') {
           //   signOut();
           console.log('signOut')

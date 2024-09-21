@@ -1,8 +1,9 @@
 import { GetDTO } from '@/types/dto/GetDTO'
-import { RoomEntity, RoomModel } from './Room'
-import { GetRoomPlayerByIdDTO } from './resources/room-player/RoomPlayerDTO'
+
 import { GetRoundByIdDTO } from '../round/RoundDTO'
 import { GetSprintByIdDTO } from '../sprint/SprintDTO'
+import { GetRoomPlayerByIdDTO } from './resources/room-player/RoomPlayerDTO'
+import { RoomEntity, RoomModel } from './Room'
 
 export type GetRoomByIdDTO = RoomEntity & {
   sprint: Omit<GetSprintByIdDTO, 'rooms'> // extension

@@ -1,4 +1,5 @@
 import { GetDTO } from '@/types/dto/GetDTO'
+
 import { GetCardByIdDTO } from '../card/CardDTO'
 import { CollectionEntity, CollectionModel } from './Collection'
 

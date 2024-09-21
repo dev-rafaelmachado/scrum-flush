@@ -1,8 +1,9 @@
 import { GetDTO } from '@/types/dto/GetDTO'
+
 import { GetRoomByIdDTO } from '../room/RoomDTO'
-import { SprintEntity, SprintModel } from './Sprint'
 import { GetStorieByIdDTO } from '../storie/StorieDTO'
 import { GetTeamSprintByIdDTO } from '../team/resources/team-sprint/TeamSprintDTO'
+import { SprintEntity, SprintModel } from './Sprint'
 
 export type GetSprintByIdDTO = SprintEntity & {
   teamSprint: Omit<GetTeamSprintByIdDTO, 'sprint'> // extension

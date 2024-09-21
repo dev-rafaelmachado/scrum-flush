@@ -1,4 +1,5 @@
 import { SprintStatus } from '@/types/enums/SprintStatus'
+
 import { BaseEntity } from '../BaseEntity'
 
 export type SprintModel = {
